@@ -129,14 +129,14 @@ class DescargasFacturasViewModel @Inject constructor(
 
     fun downloadFacturas(nroCuenta : String,nroFactura : String, listaUrl : List<String>, context : Context) {
 
+        val nombreArchivo = nroFactura
 
-        for (i in 0 until listaUrl.size - 1){
-            //val url = listaUrl.get(i)
-            val url = listaUrl[i]
+        for (i in 0..listaUrl.size - 1){
+            val url = listaUrl.get(i)
             val position = url.indexOf(nroFactura)
             if (position>0){
                 // descarga la factura tomando el item q es el path completo
-                descargaFC(context, nroFactura, nroCuenta)
+                descargaFC(context,nombreArchivo,nroCuenta)
                 break
             }
         }

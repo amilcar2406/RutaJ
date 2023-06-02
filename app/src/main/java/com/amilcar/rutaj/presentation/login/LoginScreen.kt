@@ -104,8 +104,6 @@ fun LoginScreen(
 
 
 
-
-
     if (Variables.G_usuarioState) {
         viewModel.dataStoreEnabled.value = true
         emailValue.value = Variables.G_usuarioEmail
@@ -126,6 +124,7 @@ fun LoginScreen(
             val credential = GoogleAuthProvider.getCredential(account.idToken, null)
             viewModel.signInWithGoogleCredential(credential) {
 
+                Variables.G_usuarioState = false
 
                 onLogin(
                     account.email.toString(),

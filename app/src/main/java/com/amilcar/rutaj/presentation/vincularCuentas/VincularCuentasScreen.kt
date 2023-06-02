@@ -33,6 +33,7 @@ import com.amilcar.rutaj.presentation.components.EventDialog
 import com.amilcar.rutaj.presentation.components.FlechaAtras
 import com.amilcar.rutaj.presentation.components.RoundedButton
 import com.amilcar.rutaj.presentation.components.TransparentTextField
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 
 @Composable
@@ -44,6 +45,12 @@ fun VincularCuentasScreen(
     onBack : () -> Unit,
     onDismissDialog:() -> Unit
 ) {
+
+    val systemUiController = rememberSystemUiController()
+
+    systemUiController.setSystemBarsColor(
+        color = MaterialTheme.colors.primary
+    )
 
     val context = LocalContext.current
 
@@ -196,7 +203,7 @@ fun VincularCuentasScreen(
                             modifier = Modifier.padding(bottom =  80.dp)                                ,
                             text = "Continuar", displayProgressBar = false,
                             enabled = state.listaConexiones.isNotEmpty(),
-                            onClick = {onNavigate()}
+                            onClick = onNavigate
                         )
                     }
                 }

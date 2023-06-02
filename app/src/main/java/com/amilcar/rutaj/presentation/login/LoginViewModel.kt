@@ -43,6 +43,7 @@ class LoginViewModel @Inject constructor(
 
 
 
+
         if (email.isBlank() || password.isBlank()) {
             Toast.makeText(
                 context,
@@ -92,19 +93,16 @@ class LoginViewModel @Inject constructor(
 
                                 // guardo shares preferences
                                 viewModelScope.launch(Dispatchers.IO) {
-                                if (dataStoreEnabled.value) {
+
                                     dataStore.setPreferences(
                                         state.value.nombre,
                                         state.value.email,
                                         state.value.password,
                                         state.value.telefono,
-                                        true,
+                                        Variables.G_usuarioState,
                                         state.value.usuarioId
                                     )
 
-                                } else {
-                                    dataStore.setPreferences("", "", "", "", false, 0)
-                                }
                             }
 
 

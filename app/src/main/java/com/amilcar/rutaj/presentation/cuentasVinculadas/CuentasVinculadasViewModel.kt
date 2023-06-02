@@ -31,7 +31,7 @@ class CuentasVinculadasViewModel @Inject constructor(
         val dataStore = StoreUserData(context)
         viewModelScope.launch(Dispatchers.IO) {
             dataStore.getProferences().collect { userdata ->
-                state.value = state.value.copy(
+                    state.value = state.value.copy(
                     usuarioId = userdata.id.toString(),
                     nombre = userdata.name)
                     listarCuentas(context)

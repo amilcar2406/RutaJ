@@ -95,7 +95,6 @@ fun Navigation() {
 }
 
 
-
 @ExperimentalAnimationApi
 fun NavGraphBuilder.addSplash(
     navController : NavHostController
@@ -121,10 +120,6 @@ fun NavGraphBuilder.addLogin(
     ) {
 
 
-
-
-
-
 // verifico si ya se ha logueado con google y tiene la sesion iniciadas
 
         // Check for existing Google Sign In account, if the user is already signed in
@@ -144,21 +139,21 @@ fun NavGraphBuilder.addLogin(
         val viewModel : LoginViewModel = hiltViewModel()
 
         LoginScreen(
-                viewModel = viewModel,
-                navController= navController,
-                state = viewModel.state.value,
-                onLogin = viewModel::login,
-                onNavigateToRegister = {
-                    navController.navigate(Destinations.Registration.route)
-                },
-                onNavigatetoRecoveyPassword = { mail ->
-                    navController.navigate(Destinations.RecoveryPassword.route + "/$mail")
-                },
-                onDismissDialog = viewModel::hideErrorDialog,
-            )
-        }
+            viewModel = viewModel,
+            navController = navController,
+            state = viewModel.state.value,
+            onLogin = viewModel::login,
+            onNavigateToRegister = {
+                navController.navigate(Destinations.Registration.route)
+            },
+            onNavigatetoRecoveyPassword = { mail ->
+                navController.navigate(Destinations.RecoveryPassword.route + "/$mail")
+            },
+            onDismissDialog = viewModel::hideErrorDialog,
+        )
+    }
 
-   // }*/
+    // }*/
 }
 
 
@@ -182,7 +177,7 @@ fun NavGraphBuilder.addMainScreen(
             onWeb = viewModel::web,
             onFacebook = viewModel::facebook,
             viewModel = viewModel,
-            )
+        )
     }
 }
 
@@ -205,14 +200,14 @@ fun NavGraphBuilder.addRegistration(
         RegistrationScreen(
             stateLogin = viewModelLogin.state.value,
             state = viewModel.state.value,
-            navController= navController,
+            navController = navController,
             onRegister = viewModel::register,
             onBack = {
                 navController.popBackStack()
             },
             onLogin = viewModelLogin::login,
             onDismissDialog = viewModel::hideErrorDialog,
-            viewModel=viewModelLogin
+            viewModel = viewModelLogin
 
         )
 
@@ -261,7 +256,7 @@ fun NavGraphBuilder.addChangePasswordScreen(
         route = Destinations.ChangePassword.route + "/{usuarioId}"
     )
     {
-        val usuarioId =  it.arguments?.getString("usuarioId")
+        val usuarioId = it.arguments?.getString("usuarioId")
         val viewModel : ChangePasswordViewmodel = hiltViewModel()
         val state = viewModel.state
         state.value = state.value.copy(usuarioId = usuarioId.toString())
@@ -269,8 +264,10 @@ fun NavGraphBuilder.addChangePasswordScreen(
         ChangePasswordScreen(
             state = state.value,
             onChangePass = viewModel::changePassword,
-            onBack = {  navController.navigate(route = Destinations.Perfil.route)
-                navController.popBackStack(Destinations.ChangePassword.route,true) },
+            onBack = {
+                navController.navigate(route = Destinations.Perfil.route)
+                navController.popBackStack(Destinations.ChangePassword.route, true)
+            },
             onDismissDialog = viewModel::hideErrorDialog
         )
 
@@ -381,7 +378,15 @@ fun NavGraphBuilder.addVincularCuentasScreen(
                     )
                 }
             },
-            onBack = { navController.popBackStack() },
+            onBack = {
+                if (Variables.G_hasBeenConfiguratedBefore) {
+                    navController.popBackStack()
+                } else {
+                    navController.navigate(
+                        route = Destinations.Main.route
+                    )
+                }
+            },
             onDismissDialog = viewModel::hideErrorDialog
         )
     }
@@ -403,11 +408,11 @@ fun NavGraphBuilder.addCuentasVinculadasScreen(
             title = "Cuentas Vinculadas",
             subtitle = "Selecciona una cuenta para operar",
             state = viewModel.state.value,
-        /*    onNavigate = {
-                navController.navigate(
-                    route = Destinations.Main.route
-                )
-            },*/
+            /*    onNavigate = {
+                    navController.navigate(
+                        route = Destinations.Main.route
+                    )
+                },*/
             clickActivo = true,
             onClickCuentas = { cuenta ->
                 navController.navigate(Destinations.Operaciones.route + "/$cuenta")
@@ -549,15 +554,17 @@ fun NavGraphBuilder.addPerfilScreen(
 
     ) {
 
-        val viewModel: PerfilViewModel = hiltViewModel()
+        val viewModel : PerfilViewModel = hiltViewModel()
 
         PerfilScreen(
-            onBack = { navController.popBackStack(Destinations.Perfil.route,true)
-                navController.navigate(Destinations.Main.route)},
-            onChangePassword = {usuarioId ->
-                navController.popBackStack(Destinations.Perfil.route,true)
+            onBack = {
+                navController.popBackStack(Destinations.Perfil.route, true)
+                navController.navigate(Destinations.Main.route)
+            },
+            onChangePassword = { usuarioId ->
+                navController.popBackStack(Destinations.Perfil.route, true)
                 navController.navigate(Destinations.ChangePassword.route + "/$usuarioId")
-                },
+            },
             viewModel = viewModel,
         )
 
@@ -577,9 +584,9 @@ fun NavGraphBuilder.addReclamoScreen(
 
         ReclamoScreen(
             onBack = { navController.popBackStack() },
-            onLlamarAOficina =  viewModel::llamarXReclamo,
+            onLlamarAOficina = viewModel::llamarXReclamo,
             onLlamarAGuardia = viewModel::llamarXReclamo,
-            onSendMensaje =  viewModel::enviarSmsWhatsApp,
+            onSendMensaje = viewModel::enviarSmsWhatsApp,
         )
     }
 }
@@ -647,10 +654,11 @@ fun NavGraphBuilder.addCategoriasElementosElectricosScreen(
         CategoriasElementosElectricosScreen(
             onBack = { navController.popBackStack() },
             onClick = { categoria ->
-                navController.navigate(Destinations.CargerElementos.route + "/$categoria") },
-            viewModel  = viewModel,
+                navController.navigate(Destinations.CargerElementos.route + "/$categoria")
+            },
+            viewModel = viewModel,
             state = state.value,
-            onClickResultado = {navController.navigate(Destinations.Resultados.route) }
+            onClickResultado = { navController.navigate(Destinations.Resultados.route) }
         )
     }
 }
@@ -665,13 +673,13 @@ fun NavGraphBuilder.addCargarElementosScreen(
         val categoria = it.arguments?.getString("categoria")
         val viewModel : CargarElementoElectricoViewModel = hiltViewModel()
         val state = viewModel.state
-        state.value = state.value.copy(categoria=categoria.toString())
+        state.value = state.value.copy(categoria = categoria.toString())
 
 
         CargarElementosScreen(
             state = state.value,
             onBack = { navController.popBackStack() },
-            viewModel= viewModel
+            viewModel = viewModel
         )
 
     }
@@ -702,7 +710,7 @@ fun NavGraphBuilder.addPoliticaPrivacidadScreen(navController : NavHostControlle
         route = Destinations.PoliticaPrivacidad.route
     ) {
 
-        PoliticaPrivacidadSreen (
+        PoliticaPrivacidadSreen(
             onBack = { navController.popBackStack() }
         )
 
