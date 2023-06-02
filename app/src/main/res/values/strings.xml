@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">RutaJ</string>
+    <string name="error_input_empty">El campo no puede estar vacío</string>
+    <string name="error_not_a_valid_email">Por favor ingrese un E-Mail válido</string>
+    <string name="error_not_a_valid_phone_number">Por favor ingrese un número telefonico válido</string>
+    <string name="error_incorrectly_repeated_password">Los passwords no coinciden</string>
+    <string name="error_invalid_credentials">el E-Mail o password son incorrectos</string>
+    <string name="success_registration">Alta de usuario exitoso</string>
+    <string name="success_login">Login exitoso</string>
+    <string name="error_unknown">Se produjo un error desconocido</string>
+    <string name="error_login">No se pudo conectar. Verifique el Usuario y Password</string>
+    <string name="error_register">Ocurrió un error al registrarse</string>
+    <string name="error_telefono_registrado">El número de télefono no coincide con el registrado</string>
+    <string name="error_recovery">Ocurrió un error al enviar el mail</string>
+    <string name="error_change_password">Ocurrió un error al intentar cambiar el passoword</string>
+    <string name="error_denuncia">Ocurrió un error al intentar enviar la denuncia</string>
+    <string name="error_validar_cuenta">No se pudo validar esa cuenta con ese número de factura</string>
+    <string name="cuenta_ya_validada">Esa cuenta ya esta en la lista de cuentas vinculadas</string>
+    <string name="success_validate">Validación exitosa</string>
+    <string name="error_cuentas_vinculadas">No tiene cuentas vinculadas</string>
+    <string name="error_listar_facturas">Ocurrió un error al intentar leer las facturas de esa cuenta</string>
+    <string name="lista_facturas_vacias">No hay archivos de facturas aún para esa cuenta</string>
+    <string name="error_estado_cuenta">Ocurrió un error al verificar el estado de la cuenta</string>
+    <string name="error_evolucion_consumos">Ocurrió un error al leer la evolución del consumo</string>
+    <string name="recomendHeladerasTexto1">Es conveniente que la heladera o freezer  esten lejos de la luz directa del sol y de cualquier otra fuente de calor. No guarde alimentos calientes en los mismos.</string>
+    <string name="recomendHeladerasTexto2">Revise los burletes de las puertas y verifique que cierren hermeticamente, también regule el termostato del equipo según  indicación del fabricante.,</string>
+    <string name="recomendHeladerasTexto3">No llene demasiado la heladera ya que consumirá más energía. Para el caso del freezer es mejor ocupar los espacios vacíos colocando cubeteras y bolsas de hielo.</string>
+    <string name="recomendHeladerasTexto4">Descongelar la heladera periodicamente, también es recomendable limpiar las rejillas del condensador cada tres meses.</string>
+    <string name="recomendClimatizacionTexto1"> Al comprar un equipo de aire acondicionado recordar que los de tipo inverter son más eficientes.</string>
+    <string name="recomendClimatizacionTexto2">La colocación del equipo debe ser llevada a cabo por un profesional.</string>
+    <string name="recomendClimatizacionTexto3">Regule la temperatura en 24 grados. Cuanto más baja la temperatura mayor es el consumo.</string>
+    <string name="recomendClimatizacionTexto4">Limpie periodicamente los filtros, un filtro sucio puede aumentar en un 10 % el consumo de energia.</string>
+    <string name="recomendClimatizacionTexto5">Los ventiladores consumen una décima parte de la energía que consumen los equipos de aire acondicionado.</string>
+    <string name="recomendIluminacionTexto1">Aproveche al máximo la luz del sol y encienda las luces solo cuando sea necesario.</string>
+    <string name="recomendIluminacionTexto2">Los ambientes con paredes de colores claros requieren menor iluminación.</string>
+    <string name="recomendIluminacionTexto3">Coloque fotocélulas para la iluminación exterior y apague las luces que no seean necesarias.</string>
+    <string name="recomendIluminacionTexto4">Instale lámparas de Led en los ambientes que utiliza habitualmente.</string>
+    <string name="recomendIluminacionTexto5">Para trabajos de lectura o trabajos manuales, elija la iluminación dirigida.</string>
+    <string name="recomendLavarropaTexto1">Acumule ropa hasta completar la carga del lavarropas. Remoje la ropa con manchas para evitar lavados más prolongados.</string>
+    <string name="recomendLavarropaTexto2">Procure lavar con agua fría en lugar de agua caliente,  ahorrará energía considerablemente en los lavados.</string>
+    <string name="recomendLavarropaTexto3">Instale el secador eléctrico en un lugar donde circule aire fresco, carguelo aprovechando su capacidad justa y limpie los filtros ya que las pelusas y suciedad aumentan su consumo de energía.</string>
+    <string name="recomendLavarropaTexto4">No seque ropa con la plancha. Planche primero las telas que necesitan menos calor (seda, rayón, nylon, etc.) y de a poco subir la temperatura para las prendas de telas más fuertes (algodón, lona, lino, etc</string>
+    <string name="recomendCocinasTexto1">Descongele bien los alimentos para reducir el tiempo de cocción.</string>
+    <string name="recomendCocinasTexto2">User ollas y sartenes adecuados al tamaño de la hornalla eléctrica, verifique que las tapas cierren bien a fin de mantener el calor.</string>
+    <string name="recomendCocinasTexto3">Encienda la hornalla eléctrica al momento de comenzar a cocinar.</string>
+    <string name="recomendCocinasTexto4">Revise que la puerta del horno cierre bien.</string>
+    <string name="recomendCocinasTexto5">Los hornos microondas utilizan entre 30 y 70 % menos energía que los hornos eléctricos convencionales.</string>
+    <string name="recomendTermotanquesTexto1">Elija un termotanque de acuerdo al tamaño de la familia: 1 a 3 personas: 35 litros; 4 a 7 personas: 55 litros; 7 o más personas: 85 litros.</string>
+    <string name="recomendTermotanquesTexto2">Instale el termotanque cerca del lugar donde se usará el agua caliente, para desperdiciar menos calor en el recorrido de la tubería.</string>
+    <string name="recomendTermotanquesTexto3">Gradúe el termotanque en 50 grados y evite la acumulación de sarro. Cuide que no se produzca goteo en las canillas ya que se desperdicia agua y energía.</string>
+    <string name="recomendTermotanquesTexto4">Antes de salir de vacaciones desconecte el termotanque para evitar accidentes y ahorrar energía.</string>
+    <string name="recomendTermotanquesTexto5">Las duchas eléctricas debidamente instaladas, ahorran más energía que un termotanque.</string>
+    <string name="error_electrodomesticos">Error al listar electrodomesticos</string>
+    <string name="error_insercion_simulador">Error al insertar al simulador</string>
+    <string name="error_eleminacion_simulador">Error al eliminar elemento del simulador</string>
+    <string name="terminos_y_condiciones_factura_digital">
+    TERMINOS Y CONDICIONES:\n\n\n
+    1. Con su adhesión al sistema de “Factura Digital”, Usted expresa a Coop. Ruta J su
+    consentimiento y autorización para recibir las facturas vía descarga del comprobante desde la App
+    de la Cooperativa, mediante un archivo adjunto en formato PDF.\n\n
+
+    2. Este servicio es gratuito y deshabilita la impresión en papel, por lo cual, a partir de su
+    adhesión dejará de recibir la factura impresa.\n\n
+
+    3. La Cooperativa de Servicios Públicos Ruta J pondrá a disposición los archivos para descarga
+    con un mínimo de 5 (cinco) días de anticipación a la fecha de vencimiento de la misma.\n\n
+
+    4. La factura digital a la que usted tendrá acceso mediante éste sistema es válida como
+    comprobante a los fines fiscales.\n\n
+
+    5. En caso de que usted requiera volver a recibir la factura en papel y dejar de usar la App,
+    usted podrá hacerlo solicitándolo a través de la página web de la Cooperativa (www.rutaj.com.ar),
+    enviando un mail desde la app o concurriendo personalmente a las oficinas de la Cooperativa.\n\n
+
+    6.  De verificarse un cambio de titularidad de la cuenta de facturación, la descarga de las facturas
+    será automáticamente suspendida y se enviara
+    mediante correo a la dirección postal, hasta tanto el nuevo titular del servicio no opte
+    por éste sistema de “Factura Digital”.\n\n
+
+    7. La Cooperativa de Servicios Públicos Ruta J  no será responsable en caso de que la información relativa a su factura no
+    sea recibida por usted por caso fortuito, fuerza mayor, interrupción en los sistemas de
+    comunicación online o cualquier otra causa fuera del control y/o ajena a la Cooperativa. En
+    estos casos, usted podrá acercarse a las  Oficinas de la Cooperativa para
+    solicitar la misma, ya que el hecho de que Usted no reciba su notificación de factura vía
+    la App no constituye una excepción a su obligación de pago.\n\n
+
+    8. La adhesión al sistema de “Factura Digital” no tiene incidencia alguna respecto de los
+    medios de pago seleccionado por usted para la cancelación de sus facturas.\n\n
+
+    9. La Cooperativa se reserva el derecho de discontinuar los servicios presentados bajo el
+    sistema de “Factura Digital” en cualquier momento, a su sola discreción. En dicho caso,
+    procederá a la correspondiente notificación previa de 60 días corridos.</string>
+    <string name="token">182661395621-m15f1j4fjfopismsrkuim589n1bpb4pd.apps.googleusercontent.com</string>
+    <string name="cuentaCargada">Esa cuenta ya está cargada</string>
+
+</resources>

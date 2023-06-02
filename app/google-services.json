@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "182661395621",
+    "project_id": "rutaj-e6061",
+    "storage_bucket": "rutaj-e6061.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182661395621:android:42f7e98c4d76184b67094c",
+        "android_client_info": {
+          "package_name": "com.amilcar.rutaj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182661395621-nbv4hcscu7ie2e37651lk8logvd2fsan.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.amilcar.rutaj",
+            "certificate_hash": "aca5148fcc1b45c90542b8d8f2dc2c016e465c87"
+          }
+        },
+        {
+          "client_id": "182661395621-m15f1j4fjfopismsrkuim589n1bpb4pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB08oH7U3mP2pdEL5oC8xGRIqz3X5mcjz8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182661395621-m15f1j4fjfopismsrkuim589n1bpb4pd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
