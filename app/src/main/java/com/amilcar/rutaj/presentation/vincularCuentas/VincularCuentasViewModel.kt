@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amilcar.rutaj.R
 import com.amilcar.rutaj.presentation.login.StoreUserData
+import com.amilcar.rutaj.presentation.util.Variables
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,7 +41,7 @@ class VincularCuentasViewModel @Inject constructor(
 
     fun validarCuenta(cuenta : String, factura : String,context : Context) {
 
-        val errorRegister = R.string.error_validar_cuenta
+        val errorRegister = R.string.lista_vacia_vincular_cuentas
 
         if (cuenta.isBlank() || factura.isBlank()) {
             Toast.makeText(
@@ -158,7 +159,7 @@ class VincularCuentasViewModel @Inject constructor(
 
                     if (jsonArray.length() == 0) {
                         //lista vacia
-                        state.value = state.value.copy(errorMessage = R.string.error_cuentas_vinculadas)
+                        state.value = state.value.copy(errorMessage = R.string.lista_vacia_vincular_cuentas)
                     } else {
                         for (i in 0 until jsonArray.length()) {
                             val jsonObject = jsonArray.getJSONObject(i)
@@ -169,7 +170,7 @@ class VincularCuentasViewModel @Inject constructor(
 
                             lista += "$conexionId;$facturadoA"
 
-                            //Variables.G_hasBeenConfiguratedBefore = true mica
+                            if (lista.size>1){Variables.G_hasBeenConfiguratedBefore = true}
                         }
 
                         state.value = state.value.copy(listaConexiones = lista)
@@ -190,7 +191,7 @@ class VincularCuentasViewModel @Inject constructor(
             {
                 state.value = state.value.copy(successValidate = false)
                 state.value = state.value.copy(displayProgressBar = false)
-                state.value = state.value.copy(errorMessage = R.string.error_cuentas_vinculadas)
+                state.value = state.value.copy(errorMessage = R.string.lista_vacia_vincular_cuentas)
             }) {
             // Press Ctr + O to find getParams
 

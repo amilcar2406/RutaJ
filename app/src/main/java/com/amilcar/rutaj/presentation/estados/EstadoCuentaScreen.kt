@@ -54,7 +54,7 @@ fun EstadoCuentaScreen(
 
             if (state.sinDeuda) {
                 Text(
-                    text = "No tiene talones pendientes de pago",
+                    text = "No tiene talones pendientes de pago.",
                     fontSize = 20.sp,
                     modifier = Modifier
                         .padding(top = 50.dp)
@@ -79,7 +79,7 @@ fun EstadoCuentaScreen(
 
 
         if (state.errorMessage != null) {
-            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog,onBack = {})
+            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
         }
     }
 

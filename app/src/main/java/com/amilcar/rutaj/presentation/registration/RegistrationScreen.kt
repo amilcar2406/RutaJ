@@ -357,7 +357,7 @@ fun RegistrationScreen(
         }
 
         if (state.errorMessage != null) {
-            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog,onBack = {})
+            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
         }
 
 

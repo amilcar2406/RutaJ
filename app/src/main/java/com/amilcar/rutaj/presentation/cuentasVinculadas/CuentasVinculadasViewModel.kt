@@ -75,7 +75,7 @@ class CuentasVinculadasViewModel @Inject constructor(
                         if (jsonArray.length() == 0) {
                             //lista vacia
                             state.value =
-                                state.value.copy(errorMessage = R.string.error_cuentas_vinculadas)
+                                state.value.copy(errorMessage = R.string.lista_vacia_cuentas_vinculadas)
                         } else {
                             for (i in 0 until jsonArray.length()) {
                                 val jsonObject = jsonArray.getJSONObject(i)
@@ -103,7 +103,7 @@ class CuentasVinculadasViewModel @Inject constructor(
                 {
                     state.value = state.value.copy(successList = false)
                     state.value = state.value.copy(displayProgressBar = false)
-                    state.value = state.value.copy(errorMessage = R.string.error_cuentas_vinculadas)
+                    state.value = state.value.copy(errorMessage = R.string.lista_vacia_cuentas_vinculadas)
                 }) {
                 // Press Ctr + O to find getParams
 

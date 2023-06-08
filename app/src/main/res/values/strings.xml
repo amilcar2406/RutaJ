@@ -16,8 +16,9 @@
     <string name="error_denuncia">Ocurrió un error al intentar enviar la denuncia</string>
     <string name="error_validar_cuenta">No se pudo validar esa cuenta con ese número de factura</string>
     <string name="cuenta_ya_validada">Esa cuenta ya esta en la lista de cuentas vinculadas</string>
-    <string name="success_validate">Validación exitosa</string>
-    <string name="error_cuentas_vinculadas">No tiene cuentas vinculadas aún. Valide una para poder operar.</string>
+    <string name="success_validate">Validación exitosa. Para operar regrese a la ventana principal y Seleccione Operaciones</string>
+    <string name="lista_vacia_vincular_cuentas">No tiene cuentas vinculadas aún. Valide una para poder operar.</string>
+    <string name="lista_vacia_cuentas_vinculadas">No tiene cuentas vinculadas aún. Valide una para poder operar. Regrese y Seleccione Menú - Vincular Cuentas</string>
     <string name="error_listar_facturas">Ocurrió un error al intentar leer las facturas de esa cuenta</string>
     <string name="lista_facturas_vacias">No hay archivos de facturas aún para esa cuenta. Su factura estará disponible en 24hs.</string>
     <string name="error_estado_cuenta">Ocurrió un error al verificar el estado de la cuenta</string>
