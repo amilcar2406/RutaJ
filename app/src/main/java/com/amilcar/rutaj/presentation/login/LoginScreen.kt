@@ -49,10 +49,10 @@ import com.amilcar.rutaj.presentation.components.LabelledCheckbox
 import com.amilcar.rutaj.presentation.components.RoundedButton
 import com.amilcar.rutaj.presentation.components.TransparentTextField
 import com.amilcar.rutaj.presentation.navigation.Destinations
+import com.amilcar.rutaj.presentation.util.Variables
 import com.amilcar.rutaj.ui.theme.Gray50
 import com.amilcar.rutaj.ui.theme.Orange900
 import com.amilcar.rutaj.ui.theme.Red600
-import com.amilcar.rutaj.presentation.util.Variables
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -145,15 +145,9 @@ fun LoginScreen(
 
     LaunchedEffect(state.successLogin) {
         if (state.successLogin) {
-            if (Variables.G_hasBeenConfiguratedBefore) {
                 navController.navigate(route = Destinations.Main.route) {
                     popUpTo(Destinations.Login.route) { inclusive = true }
                 }
-            } else {
-                navController.navigate(route = Destinations.VincularCuentas.route) {
-                    popUpTo(Destinations.Login.route) { inclusive = true }
-                }
-            }
         }
     }
 

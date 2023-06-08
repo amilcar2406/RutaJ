@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amilcar.rutaj.R
 import com.amilcar.rutaj.presentation.login.StoreUserData
-import com.amilcar.rutaj.presentation.util.Variables
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -170,7 +169,6 @@ class VincularCuentasViewModel @Inject constructor(
 
                             lista += "$conexionId;$facturadoA"
 
-                            if (lista.size>1){Variables.G_hasBeenConfiguratedBefore = true}
                         }
 
                         state.value = state.value.copy(listaConexiones = lista)
