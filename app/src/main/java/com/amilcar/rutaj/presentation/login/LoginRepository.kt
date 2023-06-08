@@ -1,20 +1,15 @@
 package com.amilcar.rutaj.presentation.login
 
-import android.annotation.SuppressLint
-import android.app.Application
 import android.util.Log
 import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import dagger.hilt.android.internal.Contexts
 import org.apache.commons.lang3.StringUtils
-import java.util.*
 import javax.inject.Inject
 
-class LoginRepository @Inject constructor(application : Application) {
+class LoginRepository @Inject constructor() {
 
-    private val context = Contexts.getApplication(application).applicationContext
+  //  private val context = Contexts.getApplication(application).applicationContext
 
-    suspend fun Sign_in(
+    fun signIn(
         usuario : String,
         password : String,
         nombre : String
@@ -31,9 +26,9 @@ class LoginRepository @Inject constructor(application : Application) {
 
 
         try {
-            val requestQueue = Volley.newRequestQueue(context)
+          //  val requestQueue = Volley.newRequestQueue(context)
             val url = "https://rutaj.com.ar/rutajApp/android/sign_in.php"
-            val stringRequest = @SuppressLint("ServiceCast")
+           // val stringRequest = @SuppressLint("ServiceCast")
             object : StringRequest(
                 Method.POST,
                 url,

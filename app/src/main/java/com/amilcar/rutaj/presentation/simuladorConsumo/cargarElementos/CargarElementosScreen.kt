@@ -103,7 +103,7 @@ fun CardAgregarElemento(
             Botton("Agregar", {
                 viewModel.mostrarCardAgregarElementos()
                 viewModel.listarElectrodomesticos(state.categoria,context)
-            }, Modifier)
+            }, Modifier,true)
 
 
             // carga lista del simulador
@@ -382,11 +382,11 @@ fun AddElemento(
                     horizontalArrangement = Arrangement.SpaceAround
                 ) {
 
-                    Botton("Cancelar", { onCancelar() }, Modifier)
+                    Botton("Cancelar", { onCancelar() }, Modifier,true)
 
                     Spacer(modifier = Modifier.width(10.dp))
 
-                    Botton("Aceptar", { onAceptar() }, Modifier)
+                    Botton("Aceptar", { onAceptar() }, Modifier, enabled = (state.electrodomesticoValue!="" && state.cantidadValue!="" && state.horasDeUsoValue!=""))
 
                 }
 
@@ -401,7 +401,8 @@ fun AddElemento(
 fun Botton(
     titulo : String,
     onClick : () -> Unit,
-    modifier : Modifier
+    modifier : Modifier,
+    enabled : Boolean
 
 ) {
 
@@ -416,6 +417,7 @@ fun Botton(
         ),
         shape = RoundedCornerShape(50),
         border = BorderStroke(2.dp, MaterialTheme.colors.onPrimary),
+        enabled = enabled
     ) {
 
 

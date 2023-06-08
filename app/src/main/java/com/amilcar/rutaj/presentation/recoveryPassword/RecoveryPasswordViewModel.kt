@@ -68,7 +68,7 @@ class RecoveryPasswordViewModel @Inject constructor(
                         val sendMail = SendMail()
 
                         // Envio el mail
-                        sendMail.SendMmailFunction(argsMail)
+                        sendMail.sendEmailFunction(argsMail)
 
                         if (sendMail.stateMail) {
                             state.value = state.value.copy(successRecovery = true)

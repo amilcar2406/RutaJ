@@ -66,7 +66,7 @@ class ContactoViewModel @Inject constructor(
 
 
             // Envio el mail
-            sendMail.SendMmailFunction(args)
+            sendMail.sendEmailFunction(args)
             if (sendMail.stateMail) {
                 state.value = state.value.copy(successDenuncia = true)
                 state.value = state.value.copy(displayProgressBar = false)

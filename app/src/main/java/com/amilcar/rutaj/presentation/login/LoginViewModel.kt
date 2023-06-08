@@ -1,13 +1,15 @@
 package com.amilcar.rutaj.presentation.login
 
 import android.content.Context
+import android.util.Log
+import android.util.Patterns
 import android.widget.Toast
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amilcar.rutaj.R
-import com.amilcar.rutaj.util.Variables
+import com.amilcar.rutaj.presentation.util.Variables
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.firebase.auth.AuthCredential
@@ -41,9 +43,6 @@ class LoginViewModel @Inject constructor(
     ) {
         val dataStore = StoreUserData(context)
 
-
-
-
         if (email.isBlank() || password.isBlank()) {
             Toast.makeText(
                 context,
@@ -51,7 +50,13 @@ class LoginViewModel @Inject constructor(
                 Toast.LENGTH_LONG
             ).show()
 
-        } else {
+        } else if (!isValidEmail(email)) {
+                Toast.makeText(
+                    context,
+                    "Ingrese un email válido",
+                    Toast.LENGTH_LONG
+                ).show()
+        }else {
 
 
         // busca en el servidor
@@ -173,7 +178,7 @@ class LoginViewModel @Inject constructor(
                 }
 
         }catch (e:Exception) {
-
+            Log.d("mica", e.toString())
         }
 
     }
@@ -188,6 +193,10 @@ class LoginViewModel @Inject constructor(
         )
     }
 
+
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    }
 
 }
 

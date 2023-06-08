@@ -17,8 +17,8 @@ import com.amilcar.rutaj.presentation.changePassword.ChangePasswordScreen
 import com.amilcar.rutaj.presentation.changePassword.ChangePasswordViewmodel
 import com.amilcar.rutaj.presentation.contacto.ContactoScreen
 import com.amilcar.rutaj.presentation.contacto.ContactoViewModel
+import com.amilcar.rutaj.presentation.cuentasVinculadas.CuentasVinculadasScreen
 import com.amilcar.rutaj.presentation.cuentasVinculadas.CuentasVinculadasViewModel
-import com.amilcar.rutaj.presentation.descargasFc.CuentasVinculadasScreen
 import com.amilcar.rutaj.presentation.descargasFc.DescargaFacturasScreen
 import com.amilcar.rutaj.presentation.descargasFc.DescargasFacturasViewModel
 import com.amilcar.rutaj.presentation.estados.EstadoCuentaScreen
@@ -47,7 +47,7 @@ import com.amilcar.rutaj.presentation.simuladorConsumo.resultados.ResultadosScre
 import com.amilcar.rutaj.presentation.splash.SplashScreen
 import com.amilcar.rutaj.presentation.vincularCuentas.VincularCuentasScreen
 import com.amilcar.rutaj.presentation.vincularCuentas.VincularCuentasViewModel
-import com.amilcar.rutaj.util.Variables
+import com.amilcar.rutaj.presentation.util.Variables
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 
 

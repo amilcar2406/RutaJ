@@ -89,7 +89,7 @@ fun VincularCuentasScreen(
 
                 TransparentTextField(
                     textFieldValue = cuenta,
-                    textLabel = "Ingrese Cuenta a Vincular",
+                    textLabel = "Ingrese Cuenta ( ID usuario ) a Vincular",
                     keyboardType = KeyboardType.Number,
                     keyboardActions = KeyboardActions(onNext = {
                         focusManager.moveFocus(FocusDirection.Down)
@@ -100,13 +100,14 @@ fun VincularCuentasScreen(
 
                 TransparentTextField(
                     textFieldValue = factura,
-                    textLabel = "Ingrese un numero de factura de esa cuenta",
+                    textLabel = "Ingrese un número de Referencia de Cobro de esa cuenta",
                     keyboardType = KeyboardType.Number,
                     keyboardActions = KeyboardActions(onNext = {
                         focusManager.moveFocus(FocusDirection.Down)
                     }),
                     imeAction = ImeAction.Next
                 )
+
 
             }
 
@@ -122,6 +123,7 @@ fun VincularCuentasScreen(
                     modifier = Modifier.padding(top = 20.dp),
                     text = "Validar",
                     displayProgressBar = false,
+                    enabled = cuenta.value!="" && factura.value!="",
                     onClick = {
                         onValidarCuenta(cuenta.value, factura.value,context)
                         focusManager.clearFocus()
@@ -212,7 +214,7 @@ fun VincularCuentasScreen(
     }
 
     if (state.errorMessage != null) {
-        EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
+        EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog, onBack = {onBack()})
     }
 
 

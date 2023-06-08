@@ -17,9 +17,9 @@
     <string name="error_validar_cuenta">No se pudo validar esa cuenta con ese número de factura</string>
     <string name="cuenta_ya_validada">Esa cuenta ya esta en la lista de cuentas vinculadas</string>
     <string name="success_validate">Validación exitosa</string>
-    <string name="error_cuentas_vinculadas">No tiene cuentas vinculadas</string>
+    <string name="error_cuentas_vinculadas">No tiene cuentas vinculadas aún. Valide una para poder operar.</string>
     <string name="error_listar_facturas">Ocurrió un error al intentar leer las facturas de esa cuenta</string>
-    <string name="lista_facturas_vacias">No hay archivos de facturas aún para esa cuenta</string>
+    <string name="lista_facturas_vacias">No hay archivos de facturas aún para esa cuenta. Su factura estará disponible en 24hs.</string>
     <string name="error_estado_cuenta">Ocurrió un error al verificar el estado de la cuenta</string>
     <string name="error_evolucion_consumos">Ocurrió un error al leer la evolución del consumo</string>
     <string name="recomendHeladerasTexto1">Es conveniente que la heladera o freezer  esten lejos de la luz directa del sol y de cualquier otra fuente de calor. No guarde alimentos calientes en los mismos.</string>

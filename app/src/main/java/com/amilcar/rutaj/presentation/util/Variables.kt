@@ -1,4 +1,4 @@
-package com.amilcar.rutaj.util
+package com.amilcar.rutaj.presentation.util
 
 class Variables {
 

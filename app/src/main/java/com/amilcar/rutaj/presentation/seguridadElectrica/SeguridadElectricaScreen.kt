@@ -33,7 +33,7 @@ fun SeguridadElectricaScreen(
             LazyColumn(modifier = Modifier.padding(top = 5.dp),
             verticalArrangement = Arrangement.spacedBy(1.dp)){
 
-            item() {
+            item {
                 Text(text = "Las instalaciones eléctricas de un inmueble deben cumplir ciertas condiciones para ser consideradas seguras, confiables y eficientes:",
                      style = MaterialTheme.typography.h6,
                      textAlign = TextAlign.Justify)

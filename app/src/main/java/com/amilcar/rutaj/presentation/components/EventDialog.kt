@@ -18,18 +18,25 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.amilcar.rutaj.R
+import com.amilcar.rutaj.presentation.util.Variables
 
 @Composable
 fun EventDialog(
     modifier: Modifier = Modifier,
     @StringRes errorMessage: Int,
-    onDismiss: (() -> Unit)? = null
+    onDismiss: (() -> Unit)? = null,
+    onBack:() -> Unit
 ) {
     AlertDialog(
         modifier = modifier
             .background(MaterialTheme.colors.surface)
             .padding(16.dp),
-        onDismissRequest = { onDismiss?.invoke() },
+        onDismissRequest = { onDismiss?.invoke()
+                           if (errorMessage == R.string.success_validate)
+                               Variables.G_hasBeenConfiguratedBefore = true
+                               onBack()
+                           },
         title = {
             Text(
                 "Resultado",
@@ -56,7 +63,8 @@ fun EventDialog(
                     .padding(8.dp),
                 horizontalArrangement = Arrangement.End
             ) {
-                TextButton(onClick = { onDismiss?.invoke() }) {
+                TextButton(onClick = { onDismiss?.invoke()
+                    if (errorMessage == R.string.success_validate) onBack()}) {
                     Text(text = "Aceptar", style = MaterialTheme.typography.button)
                 }
             }

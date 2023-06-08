@@ -1,11 +1,9 @@
 package com.amilcar.rutaj.presentation.util
 
-import android.util.Log
 import java.time.format.DateTimeFormatter
 
 
-fun FormatoFecha(dateString: String) :String{
-    Log.d("mica fecha", dateString)
+fun formatoFecha(dateString: String) :String{
 
 
     //val date = LocalDate.parse(

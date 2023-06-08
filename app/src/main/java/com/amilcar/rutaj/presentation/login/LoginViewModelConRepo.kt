@@ -75,7 +75,7 @@ class LoginViewModelConRepo @Inject constructor(
 
                 Log.d("mica entro al view","entro")
 
-                val resultado = async(Dispatchers.IO) { repository.Sign_in(
+                val resultado = async(Dispatchers.IO) { repository.signIn(
                             usuario,
                             password,
                             nombre

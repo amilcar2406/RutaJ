@@ -1,4 +1,4 @@
-package com.amilcar.rutaj.presentation.descargasFc
+package com.amilcar.rutaj.presentation.cuentasVinculadas
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -18,10 +18,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.amilcar.rutaj.presentation.components.EventDialog
 import com.amilcar.rutaj.presentation.components.FlechaAtras
-import com.amilcar.rutaj.presentation.cuentasVinculadas.CuentasVinculadasState
-import com.amilcar.rutaj.presentation.cuentasVinculadas.CuentasVinculadasViewModel
 
 @Composable
 fun CuentasVinculadasScreen(
@@ -68,6 +67,14 @@ fun CuentasVinculadasScreen(
             Divider(modifier = Modifier.fillMaxWidth(), thickness = 1.dp)
 
 
+                  Text(modifier = Modifier
+                      .fillMaxWidth()
+                      .padding(end = 8.dp),
+                      text = "Cuentas Vinculadas ${state.listaConexiones.size}",
+                      fontSize = 14.sp,
+                      textAlign = TextAlign.End)
+
+
 
 
                 LazyColumn(
@@ -91,7 +98,7 @@ fun CuentasVinculadasScreen(
         }
 
         if (state.errorMessage != null) {
-            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
+            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog,onBack = {})
         }
 
     }
@@ -121,7 +128,11 @@ fun CuentasVinculadasScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(100.dp)
-                .clickable { if(clickActivo){ onClick()} }
+                .clickable {
+                    if (clickActivo) {
+                        onClick()
+                    }
+                }
                 .padding(10.dp),
             shape = RoundedCornerShape(10.dp),
             elevation = 8.dp,

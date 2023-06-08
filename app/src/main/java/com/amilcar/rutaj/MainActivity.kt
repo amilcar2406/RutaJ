@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
@@ -21,16 +22,24 @@ import androidx.lifecycle.lifecycleScope
 import com.amilcar.rutaj.presentation.login.DatosUsuariosState
 import com.amilcar.rutaj.presentation.login.StoreUserData
 import com.amilcar.rutaj.presentation.navigation.Navigation
+import com.amilcar.rutaj.presentation.util.Variables
 import com.amilcar.rutaj.ui.theme.RutaJTheme
-import com.amilcar.rutaj.util.Variables
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.google.android.play.core.appupdate.AppUpdateManager
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.appupdate.AppUpdateOptions
+import com.google.android.play.core.install.InstallStateUpdatedListener
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.InstallStatus
+import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.android.play.core.ktx.isFlexibleUpdateAllowed
+import com.google.android.play.core.ktx.isImmediateUpdateAllowed
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.time.Duration.Companion.seconds
+
 
 @ExperimentalAnimationApi
 @ExperimentalComposeUiApi
@@ -39,7 +48,10 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    var contador = 0
+
+
+    private lateinit var appUpdateManager : AppUpdateManager
+    private val updateType = AppUpdateType.FLEXIBLE
 
     private val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -53,6 +65,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val state : MutableState<DatosUsuariosState> = mutableStateOf(DatosUsuariosState())
+
+        // chequeo por actualizaciones
+        appUpdateManager = AppUpdateManagerFactory.create(applicationContext)
+        if (updateType==AppUpdateType.FLEXIBLE){
+            appUpdateManager.registerListener(installStateUpdateListener)
+        }
+
+        checkForAppUpdates()
 
         setContent {
             RutaJTheme {
@@ -92,6 +112,74 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+
+    // escucha el estado de la instalacion de la actualizacion
+    private  val installStateUpdateListener = InstallStateUpdatedListener{state ->
+        if (state.installStatus() == InstallStatus.DOWNLOADED){
+            Toast.makeText(
+                applicationContext,
+                "Descarga exitosa. Reinicie la app en 5 segundos.",
+                Toast.LENGTH_LONG
+            ).show()
+            lifecycleScope.launch{
+                delay(5.seconds)
+                appUpdateManager.completeUpdate()
+            }
+        }
+    }
+
+
+    // verifica el estado de la actualizacion
+    override fun onResume() {
+        super.onResume()
+        if (updateType == AppUpdateType.IMMEDIATE){
+            appUpdateManager.appUpdateInfo.addOnSuccessListener{ info ->
+                if (info.updateAvailability() == UpdateAvailability.DEVELOPER_TRIGGERED_UPDATE_IN_PROGRESS) {
+                    appUpdateManager.startUpdateFlowForResult(
+                        info,
+                        this,
+                        AppUpdateOptions.newBuilder(updateType)
+                            .setAllowAssetPackDeletion(true)
+                            .build(),
+                        123
+                    )
+                }
+            }
+        }
+    }
+
+
+    // cheque por update de la app
+    private fun checkForAppUpdates(){
+
+        appUpdateManager.appUpdateInfo.addOnSuccessListener {info ->
+            val isUpdateAvailable = info.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+            val isUpdateAllowed = when(updateType){
+                AppUpdateType.FLEXIBLE -> info.isFlexibleUpdateAllowed
+                AppUpdateType.IMMEDIATE -> info.isImmediateUpdateAllowed
+                else -> false
+            }
+            if (isUpdateAvailable && isUpdateAllowed){
+                appUpdateManager.startUpdateFlowForResult(
+                    info,
+                    this,
+                    AppUpdateOptions.newBuilder(updateType)
+                        .setAllowAssetPackDeletion(true)
+                        .build(),
+                    123
+                )
+            }
+        }
+
+
+    }
+
+
+
+
+
+
 
 
 
@@ -175,7 +263,7 @@ class MainActivity : ComponentActivity() {
 
 
         //  no utlizada es para loggear directamten con google SIlentsignin
-        fun verificarSesionGoogle(task : Task<GoogleSignInAccount>) : Array<String?> {
+      /*  fun verificarSesionGoogle(task : Task<GoogleSignInAccount>) : Array<String?> {
 
             val account : GoogleSignInAccount = task.getResult(ApiException::class.java)
 
@@ -189,11 +277,18 @@ class MainActivity : ComponentActivity() {
             }
 
             return googleArray
-        }
+        }*/
 
     }
 
 
+    // destruye el objeto para una actulizacion flexible de la app
+    override fun onDestroy() {
+        super.onDestroy()
+        if (updateType == AppUpdateType.FLEXIBLE){
+            appUpdateManager.unregisterListener(installStateUpdateListener)
+        }
+    }
 
 }
 

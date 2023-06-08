@@ -11,12 +11,12 @@ import javax.mail.Session
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
-class SendMail()  {
+class SendMail  {
 
     var stateMail by mutableStateOf(false)
 
 
-    fun SendMmailFunction(args : Array<String>) {
+    fun sendEmailFunction(args : Array<String>) {
         val userName = Credentials.EMAIL
         val password = Credentials.PASSWORD
 

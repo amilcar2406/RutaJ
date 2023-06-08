@@ -1,6 +1,7 @@
 package com.amilcar.rutaj.presentation.login
 
 import android.content.Context
+import android.util.Log
 import android.util.Patterns
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -51,7 +52,7 @@ import com.amilcar.rutaj.presentation.navigation.Destinations
 import com.amilcar.rutaj.ui.theme.Gray50
 import com.amilcar.rutaj.ui.theme.Orange900
 import com.amilcar.rutaj.ui.theme.Red600
-import com.amilcar.rutaj.util.Variables
+import com.amilcar.rutaj.presentation.util.Variables
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -134,6 +135,7 @@ fun LoginScreen(
                 )
             }
         } catch (e : Exception) {
+            Log.d("mica",e.toString())
         }
     }
 
@@ -288,7 +290,7 @@ fun LoginScreen(
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .padding(end = 4.dp)
-                                    .clickable(){navController.navigate(Destinations.PoliticaPrivacidad.route)},
+                                    .clickable { navController.navigate(Destinations.PoliticaPrivacidad.route) },
                                 text = "Política de privacidad",
                                 textAlign = TextAlign.Right,
                                 fontStyle = FontStyle.Italic,
@@ -379,6 +381,7 @@ fun LoginScreen(
                             RoundedButton(
                                 text = "Login",
                                 displayProgressBar = state.displayProgressBar,
+                                enabled = emailValue.value!="" && passwordValue.value!="",
                                 onClick = {
                                     onLogin(
                                         (emailValue.value),
@@ -451,7 +454,8 @@ fun LoginScreen(
         if (state.errorMessage != null) {
             EventDialog(
                 errorMessage = state.errorMessage,
-                onDismiss = onDismissDialog
+                onDismiss = onDismissDialog,
+                onBack = {}
             )
         }
 

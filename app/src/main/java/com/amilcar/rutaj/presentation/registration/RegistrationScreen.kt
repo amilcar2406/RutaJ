@@ -1,6 +1,7 @@
 package com.amilcar.rutaj.presentation.registration
 
 import android.content.Context
+import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
@@ -44,7 +45,8 @@ import com.amilcar.rutaj.presentation.components.TransparentTextField
 import com.amilcar.rutaj.presentation.login.LoginState
 import com.amilcar.rutaj.presentation.login.LoginViewModel
 import com.amilcar.rutaj.presentation.navigation.Destinations
-import com.amilcar.rutaj.util.Variables
+import com.amilcar.rutaj.presentation.util.Variables
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
@@ -62,6 +64,12 @@ fun RegistrationScreen(
     onDismissDialog : () -> Unit,
     viewModel : LoginViewModel,
 ) {
+
+    val systemUiController = rememberSystemUiController()
+
+    systemUiController.setSystemBarsColor(
+        color = MaterialTheme.colors.primary
+    )
 
     val nameValue = remember { mutableStateOf("") }
     val emailValue = remember { mutableStateOf("") }
@@ -100,6 +108,7 @@ fun RegistrationScreen(
                 )
             }
         } catch (e : Exception) {
+            Log.d("mica", e.toString())
         }
     }
 
@@ -348,7 +357,7 @@ fun RegistrationScreen(
         }
 
         if (state.errorMessage != null) {
-            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
+            EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog,onBack = {})
         }
 
 

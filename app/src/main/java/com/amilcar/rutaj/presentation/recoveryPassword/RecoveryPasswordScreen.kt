@@ -25,6 +25,7 @@ import com.amilcar.rutaj.presentation.components.FlechaAtras
 import com.amilcar.rutaj.presentation.components.RoundedButton
 import com.amilcar.rutaj.presentation.components.TransparentTextField
 import com.amilcar.rutaj.presentation.recoveryPassword.RecoveryPasswordState
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
 fun RecoveryPasswordScreen(
@@ -34,6 +35,13 @@ fun RecoveryPasswordScreen(
     onBack : () -> Unit,
     onDismissDialog : () -> Unit
 ) {
+
+    val systemUiController = rememberSystemUiController()
+
+
+    systemUiController.setSystemBarsColor(
+        color = MaterialTheme.colors.primary
+    )
 
     val context = LocalContext.current
     val phoneNumber = rememberSaveable { mutableStateOf("") }
@@ -92,6 +100,7 @@ fun RecoveryPasswordScreen(
                 RoundedButton(
                     text = "Enviar",
                     displayProgressBar = state.displayProgressBar,
+                    enabled = phoneNumber.value != "",
                     onClick = {
                         val mail = arrayOf(email,phoneNumber.value)
 
@@ -107,7 +116,7 @@ fun RecoveryPasswordScreen(
 
 
     if (state.errorMessage != null) {
-        EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
+        EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog, onBack = {})
     }
 
 }

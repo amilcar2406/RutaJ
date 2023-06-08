@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.amilcar.rutaj.R
 import com.amilcar.rutaj.presentation.login.StoreUserData
-import com.amilcar.rutaj.util.Variables
+import com.amilcar.rutaj.presentation.util.Variables
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import dagger.hilt.android.lifecycle.HiltViewModel

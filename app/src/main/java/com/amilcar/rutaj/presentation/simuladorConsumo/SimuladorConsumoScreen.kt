@@ -259,7 +259,7 @@ fun CardRecomendaciones(
         ) {
 
             LazyColumn {
-                item() {
+                item {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
